@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doing.src.dao.PhoneCodeDao">
+	<resultMap id="BaseResultMap" type="com.doing.src.entity.PhoneCode">
+		<id column="code_id" jdbcType="INTEGER" property="codeId" />
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+		<result column="code" jdbcType="INTEGER" property="code" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+
+
+	<insert id="insert">
+		insert into tb_phone_code
+		(code_id,phone,code,create_time)
+		values
+		(#{codeId},#{phone},#{code},#{createTime})
+	</insert>
+
+	<select id="findByNew" resultMap="BaseResultMap">
+		select * from tb_phone_code
+		order by create_time desc
+		limit 1
+	</select>
+
+</mapper>
