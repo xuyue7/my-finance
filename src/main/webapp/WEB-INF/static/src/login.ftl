@@ -20,8 +20,8 @@
 
 			<div class="layadmin-user-login-main">
 				<div class="layadmin-user-login-box layadmin-user-login-header">
-					<h2>后台管理</h2>
-					<p>后台管理系统</p>
+					<h2>天天服装店财务管理系统</h2>
+					<p>天天服装店财务管理系统</p>
 				</div>
 				<div class="layadmin-user-login-box layadmin-user-login-body layui-form">
 					<div class="layui-form-item">
