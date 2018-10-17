@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doing.src.dao.property.PropertyTypeMapper">
+	<resultMap id="BaseResultMap"
+		type="com.doing.src.entity.property.PropertyType">
+		<id column="property_type_id" jdbcType="VARCHAR"
+			property="propertyTypeId" />
+		<result column="property_type_title" jdbcType="VARCHAR"
+			property="propertyTypeTitle" />
+		<result column="admin_id" jdbcType="VARCHAR" property="adminId" />
+		<result column="property_type_dt" jdbcType="TIMESTAMP"
+			property="propertyTypeDt" />
+		<collection property="propertySmallType"
+			ofType="com.doing.src.entity.property.PropertySmallType">
+			<id column="s_id" jdbcType="VARCHAR" property="sId" />
+			<result column="peoperty_id" jdbcType="VARCHAR"
+				property="peopertyId" />
+			<result column="s_title" jdbcType="VARCHAR" property="sTitle" />
+			<result column="s_no" jdbcType="VARCHAR" property="sNo" />
+			<result column="s_admin" jdbcType="VARCHAR" property="sAdmin" />
+			<result column="s_dt" jdbcType="TIMESTAMP" property="sDt" />
+		</collection>
+	</resultMap>
+
+	<resultMap id="ResultMap"
+		type="com.doing.src.entity.property.PropertySmallType">
+		<id column="s_id" jdbcType="VARCHAR" property="sId" />
+		<result column="peoperty_id" jdbcType="VARCHAR"
+			property="peopertyId" />
+		<result column="s_title" jdbcType="VARCHAR" property="sTitle" />
+		<result column="s_no" jdbcType="VARCHAR" property="sNo" />
+		<result column="s_admin" jdbcType="VARCHAR" property="sAdmin" />
+		<result column="s_dt" jdbcType="TIMESTAMP" property="sDt" />
+		<association property="propertySmallType"
+			javaType="com.doing.src.entity.property.PropertyType">
+			<id column="property_type_id" jdbcType="VARCHAR"
+				property="propertyTypeId" />
+			<result column="property_type_title" jdbcType="VARCHAR"
+				property="propertyTypeTitle" />
+			<result column="admin_id" jdbcType="VARCHAR"
+				property="adminId" />
+			<result column="property_type_dt" jdbcType="TIMESTAMP"
+				property="propertyTypeDt" />
+		</association>
+	</resultMap>
+	<sql id="Base_Column_List">
+		property_type_id, property_type_title, admin_id,
+		property_type _dt
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from property_type
+		where property_type_id =
+		#{propertyTypeId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		property_type
+		where property_type_id =
+		#{propertyTypeId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert"
+		parameterType="com.doing.src.entity.property.PropertyType">
+		insert into property_type (property_type_id,
+		property_type_title,
+		admin_id, property_type_dt)
+		values
+		(#{propertyTypeId,jdbcType=VARCHAR},
+		#{propertyTypeTitle,jdbcType=VARCHAR},
+		#{adminId,jdbcType=VARCHAR},
+		#{propertyTypeDt,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.doing.src.entity.property.PropertyType">
+		insert into property_type
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="propertyTypeId != null">
+				property_type_id,
+			</if>
+			<if test="propertyTypeTitle != null">
+				property_type_title,
+			</if>
+			<if test="adminId != null">
+				admin_id,
+			</if>
+			<if test="propertyTypeDt != null">
+				property_type _dt,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="propertyTypeId != null">
+				#{propertyTypeId,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyTypeTitle != null">
+				#{propertyTypeTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="adminId != null">
+				#{adminId,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyTypeDt != null">
+				#{propertyTypeDt,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.doing.src.entity.property.PropertyType">
+		update property_type
+		<set>
+			<if test="propertyTypeTitle != null">
+				property_type_title =
+				#{propertyTypeTitle,jdbcType=VARCHAR},
+			</if>
+			<if test="adminId != null">
+				admin_id = #{adminId,jdbcType=VARCHAR},
+			</if>
+			<if test="propertyTypeDt != null">
+				property_type _dt = #{propertyTypeDt,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where property_type_id = #{propertyTypeId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.doing.src.entity.property.PropertyType">
+		update property_type
+		set property_type_title =
+		#{propertyTypeTitle,jdbcType=VARCHAR},
+		admin_id =
+		#{adminId,jdbcType=VARCHAR},
+		property_type_dt =
+		#{propertyTypeDt,jdbcType=TIMESTAMP}
+		where property_type_id =
+		#{propertyTypeId,jdbcType=VARCHAR}
+	</update>
+
+	<select id="selectPeopertyTypeAll" resultMap="BaseResultMap">
+		select
+		a.*,b.* FROM property_type a LEFT
+		JOIN property_small_type b
+		on b.peoperty_id =a.property_type_id
+		limit
+		#{page},#{limit}
+	</select>
+	<select id="findPeopertyTypeCount" resultType="INTEGER">
+		select count(*)
+		from property_type a,property_small_type b
+		where
+		b.peoperty_id
+		=a.property_type_id
+	</select>
+</mapper>

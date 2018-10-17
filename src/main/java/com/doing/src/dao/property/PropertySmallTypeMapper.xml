@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doing.src.dao.property.PropertySmallTypeMapper">
+  <resultMap id="BaseResultMap" type="com.doing.src.entity.property.PropertySmallType">
+    <id column="s_id" jdbcType="VARCHAR" property="sId" />
+    <result column="peoperty_id" jdbcType="VARCHAR" property="peopertyId" />
+    <result column="s_title" jdbcType="VARCHAR" property="sTitle" />
+    <result column="s_no" jdbcType="VARCHAR" property="sNo" />
+    <result column="s_admin" jdbcType="VARCHAR" property="sAdmin" />
+    <result column="s_dt" jdbcType="TIMESTAMP" property="sDt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    s_id, peoperty_id, s_title, s_no, s_admin, s_dt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from property_small_type
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from property_small_type
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.doing.src.entity.property.PropertySmallType">
+    insert into property_small_type (s_id, peoperty_id, s_title, 
+      s_no, s_admin, s_dt)
+    values (#{sId,jdbcType=VARCHAR}, #{peopertyId,jdbcType=VARCHAR}, #{sTitle,jdbcType=VARCHAR}, 
+      #{sNo,jdbcType=VARCHAR}, #{sAdmin,jdbcType=VARCHAR}, #{sDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doing.src.entity.property.PropertySmallType">
+    insert into property_small_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        s_id,
+      </if>
+      <if test="peopertyId != null">
+        peoperty_id,
+      </if>
+      <if test="sTitle != null">
+        s_title,
+      </if>
+      <if test="sNo != null">
+        s_no,
+      </if>
+      <if test="sAdmin != null">
+        s_admin,
+      </if>
+      <if test="sDt != null">
+        s_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        #{sId,jdbcType=VARCHAR},
+      </if>
+      <if test="peopertyId != null">
+        #{peopertyId,jdbcType=VARCHAR},
+      </if>
+      <if test="sTitle != null">
+        #{sTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="sNo != null">
+        #{sNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sAdmin != null">
+        #{sAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="sDt != null">
+        #{sDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doing.src.entity.property.PropertySmallType">
+    update property_small_type
+    <set>
+      <if test="peopertyId != null">
+        peoperty_id = #{peopertyId,jdbcType=VARCHAR},
+      </if>
+      <if test="sTitle != null">
+        s_title = #{sTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="sNo != null">
+        s_no = #{sNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sAdmin != null">
+        s_admin = #{sAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="sDt != null">
+        s_dt = #{sDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doing.src.entity.property.PropertySmallType">
+    update property_small_type
+    set peoperty_id = #{peopertyId,jdbcType=VARCHAR},
+      s_title = #{sTitle,jdbcType=VARCHAR},
+      s_no = #{sNo,jdbcType=VARCHAR},
+      s_admin = #{sAdmin,jdbcType=VARCHAR},
+      s_dt = #{sDt,jdbcType=TIMESTAMP}
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from property_small_type
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from property_small_type
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.doing.entity.property.PropertySmallType">
+    insert into property_small_type (s_id, peoperty_id, s_title, 
+      s_no, s_admin, s_dt)
+    values (#{sId,jdbcType=VARCHAR}, #{peopertyId,jdbcType=VARCHAR}, #{sTitle,jdbcType=VARCHAR}, 
+      #{sNo,jdbcType=VARCHAR}, #{sAdmin,jdbcType=VARCHAR}, #{sDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doing.entity.property.PropertySmallType">
+    insert into property_small_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        s_id,
+      </if>
+      <if test="peopertyId != null">
+        peoperty_id,
+      </if>
+      <if test="sTitle != null">
+        s_title,
+      </if>
+      <if test="sNo != null">
+        s_no,
+      </if>
+      <if test="sAdmin != null">
+        s_admin,
+      </if>
+      <if test="sDt != null">
+        s_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        #{sId,jdbcType=VARCHAR},
+      </if>
+      <if test="peopertyId != null">
+        #{peopertyId,jdbcType=VARCHAR},
+      </if>
+      <if test="sTitle != null">
+        #{sTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="sNo != null">
+        #{sNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sAdmin != null">
+        #{sAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="sDt != null">
+        #{sDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doing.entity.property.PropertySmallType">
+    update property_small_type
+    <set>
+      <if test="peopertyId != null">
+        peoperty_id = #{peopertyId,jdbcType=VARCHAR},
+      </if>
+      <if test="sTitle != null">
+        s_title = #{sTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="sNo != null">
+        s_no = #{sNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sAdmin != null">
+        s_admin = #{sAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="sDt != null">
+        s_dt = #{sDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doing.entity.property.PropertySmallType">
+    update property_small_type
+    set peoperty_id = #{peopertyId,jdbcType=VARCHAR},
+      s_title = #{sTitle,jdbcType=VARCHAR},
+      s_no = #{sNo,jdbcType=VARCHAR},
+      s_admin = #{sAdmin,jdbcType=VARCHAR},
+      s_dt = #{sDt,jdbcType=TIMESTAMP}
+    where s_id = #{sId,jdbcType=VARCHAR}
+  </update>
+</mapper>

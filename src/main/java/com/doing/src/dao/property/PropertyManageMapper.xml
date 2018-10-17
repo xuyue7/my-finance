@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytw1.dao.User.property_manageMapper">
+  <resultMap id="BaseResultMap" type="com.ytw1.entity.User.property_manage">
+    <id column="property _id" jdbcType="VARCHAR" property="propertyId" />
+    <result column="manage_describe" jdbcType="VARCHAR" property="manageDescribe" />
+    <result column="property _use__id" jdbcType="INTEGER" property="propertyUseId" />
+    <result column="admin_id" jdbcType="VARCHAR" property="adminId" />
+    <result column="manage _dt" jdbcType="INTEGER" property="manageDt" />
+    <result column="start_dt" jdbcType="DATE" property="startDt" />
+    <result column="create_dt" jdbcType="TIMESTAMP" property="createDt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    "property _id", manage_describe, "property _use__id", admin_id, "manage _dt", start_dt, 
+    create_dt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from property_manage
+    where "property _id" = #{propertyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from property_manage
+    where "property _id" = #{propertyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ytw1.entity.User.property_manage">
+    insert into property_manage ("property _id", manage_describe, "property _use__id", 
+      admin_id, "manage _dt", start_dt, 
+      create_dt)
+    values (#{propertyId,jdbcType=VARCHAR}, #{manageDescribe,jdbcType=VARCHAR}, #{propertyUseId,jdbcType=INTEGER}, 
+      #{adminId,jdbcType=VARCHAR}, #{manageDt,jdbcType=INTEGER}, #{startDt,jdbcType=DATE}, 
+      #{createDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ytw1.entity.User.property_manage">
+    insert into property_manage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="propertyId != null">
+        "property _id",
+      </if>
+      <if test="manageDescribe != null">
+        manage_describe,
+      </if>
+      <if test="propertyUseId != null">
+        "property _use__id",
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="manageDt != null">
+        "manage _dt",
+      </if>
+      <if test="startDt != null">
+        start_dt,
+      </if>
+      <if test="createDt != null">
+        create_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=VARCHAR},
+      </if>
+      <if test="manageDescribe != null">
+        #{manageDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyUseId != null">
+        #{propertyUseId,jdbcType=INTEGER},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=VARCHAR},
+      </if>
+      <if test="manageDt != null">
+        #{manageDt,jdbcType=INTEGER},
+      </if>
+      <if test="startDt != null">
+        #{startDt,jdbcType=DATE},
+      </if>
+      <if test="createDt != null">
+        #{createDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ytw1.entity.User.property_manage">
+    update property_manage
+    <set>
+      <if test="manageDescribe != null">
+        manage_describe = #{manageDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyUseId != null">
+        "property _use__id" = #{propertyUseId,jdbcType=INTEGER},
+      </if>
+      <if test="adminId != null">
+        admin_id = #{adminId,jdbcType=VARCHAR},
+      </if>
+      <if test="manageDt != null">
+        "manage _dt" = #{manageDt,jdbcType=INTEGER},
+      </if>
+      <if test="startDt != null">
+        start_dt = #{startDt,jdbcType=DATE},
+      </if>
+      <if test="createDt != null">
+        create_dt = #{createDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where "property _id" = #{propertyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ytw1.entity.User.property_manage">
+    update property_manage
+    set manage_describe = #{manageDescribe,jdbcType=VARCHAR},
+      "property _use__id" = #{propertyUseId,jdbcType=INTEGER},
+      admin_id = #{adminId,jdbcType=VARCHAR},
+      "manage _dt" = #{manageDt,jdbcType=INTEGER},
+      start_dt = #{startDt,jdbcType=DATE},
+      create_dt = #{createDt,jdbcType=TIMESTAMP}
+    where "property _id" = #{propertyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

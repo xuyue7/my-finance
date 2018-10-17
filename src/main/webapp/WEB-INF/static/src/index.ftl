@@ -71,7 +71,7 @@
 				<div class="layui-side layui-side-menu">
 					<div class="layui-side-scroll">
 						<div class="layui-logo" lay-href="home/console.html">
-							<span>后台管理系统</span>
+							<span>财务管理系统</span>
 						</div>
 
 						<ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
@@ -86,121 +86,206 @@
 									</dd>
 								</dl>
 							</li>
-							<li data-name="user" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="用户" lay-direction="2">
-									<i class="layui-icon layui-icon-user"></i>
+							<li data-name="home" class="layui-nav-item">
+								<a href="javascript:;" lay-tips="用户管理" lay-direction="2">
+									<i class="layui-icon layui-icon-home"></i>
 									<cite>用户管理</cite>
 								</a>
 								<dl class="layui-nav-child">
+									<dd data-name="user" >
+										<a lay-href="${BASE_PATH}/admin/user/admin_manage_page">管理员管理</a>
+									</dd>
+								</dl>
+								<dl class="layui-nav-child">
+									<dd data-name="console">
+										<a lay-href="${BASE_PATH}/admin/user/staff_manage_page">员工管理</a>
+									</dd>
+								</dl>
+							</li>
+							<li data-name="user" class="layui-nav-item">
+								<a href="javascript:;" lay-tips="凭证" lay-direction="2">
+									<i class="layui-icon layui-icon-user"></i>
+									<cite>凭证</cite>
+								</a>
+								<dl class="layui-nav-child">
 									<dd data-name="user">
-										<a lay-href="${BASE_PATH}/admin/user/user_list" lay-text="">用户列表</a>
+										<a lay-href="${BASE_PATH}/admin/finance/fiance_credential_page" lay-text="">新增凭证</a>
 									</dd>
 									<dd data-name="apply">
-										<a lay-href="${BASE_PATH}/admin/user/apply_list" lay-text="">实名审核</a>
+										<a lay-href="${BASE_PATH}/admin/finance/fiance_credential_see" lay-text="">查看凭证</a>
 									</dd>
 									<dd data-name="order">
-										<a lay-href="${BASE_PATH}/admin/order/order_list" lay-text="">全部订单</a>
+										<a lay-href="${BASE_PATH}/admin/finance/fiance_credential_all" lay-text="">全部凭证</a>
 									</dd>
 								</dl>
 							</li>
 							<li data-name="task" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="任务" lay-direction="2">
+								<a href="javascript:;" lay-tips="出纳" lay-direction="2">
 									<i class="layui-icon layui-icon-user"></i>
-									<cite>任务管理</cite>
+									<cite>出纳</cite>
 								</a>
 								<dl class="layui-nav-child">
 									<dd data-name="task">
-										<a lay-href="${BASE_PATH}/admin/task/task_list" lay-text="">任务列表</a>
+										<a lay-href="${BASE_PATH}/admin/task/task_list" lay-text="">现金日记账</a>
 									</dd>
 									<dd data-name="task_type">
-										<a lay-href="${BASE_PATH}/admin/task/task_type_list" lay-text="">任务类型</a>
+										<a lay-href="${BASE_PATH}/admin/task/task_type_list" lay-text="">内部转账</a>
 									</dd>
 									<dd data-name="task_type">
-										<a lay-href="${BASE_PATH}/admin/task_report/task_report_list" lay-text="">任务举报</a>
+										<a lay-href="${BASE_PATH}/admin/task_report/task_report_list" lay-text="">资金报表</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/admin/task_report/task_report_list1" lay-text="">收支类别</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/admin/task_report/task_report_list2" lay-text="">核对总账</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/admin/task_report/task_report_list3" lay-text="">账户设置</a>
+									</dd>
+								</dl>
+							</li>
+							
+							<li data-name="user" class="layui-nav-item">
+								<a href="javascript:;" lay-tips="工资" lay-direction="2">
+									<i class="layui-icon layui-icon-user"></i>
+									<cite>工资</cite>
+								</a>
+								<dl class="layui-nav-child">
+									<dd data-name="user">
+										<a lay-href="${BASE_PATH}/admin/user/user_list" lay-text="">工资管理</a>
+									</dd>
+									<dd data-name="apply">
+										<a lay-href="${BASE_PATH}/admin/user/apply_list" lay-text="">员工管理</a>
+									</dd>
+									<dd data-name="order">
+										<a lay-href="${BASE_PATH}/admin/order/order_list" lay-text="">五险一金</a>
+									</dd>
+								</dl>
+							</li>
+							
+							<li data-name="quanzi" class="layui-nav-item">
+								<a href="javascript:;" lay-tips="资产" lay-direction="2">
+									<i class="layui-icon layui-icon-user"></i>
+									<cite>资产</cite>
+								</a>
+								<dl class="layui-nav-child">
+									<dd data-name="property">
+										<a lay-href="${BASE_PATH}/admin/property/property_manage_page" lay-text="">资产管理</a>
+									</dd>
+									<dd data-name="property_count">
+										<a lay-href="${BASE_PATH}/admin/property/property_count_page" lay-text="">资产汇总</a>
+									</dd>
+									<dd data-name="property_type">
+										<a lay-href="${BASE_PATH}/admin/property/property_type_page" lay-text="">资产类别设置</a>
+									</dd>
+									<dd data-name="property_detail">
+										<a lay-href="${BASE_PATH}/admin/property/property_detail_page" lay-text="">折旧明细表</a>
+									</dd>
+								</dl>
+								</li>
+							<li data-name="quanzi" class="layui-nav-item">
+								<a href="javascript:;" lay-tips="账簿" lay-direction="2">
+									<i class="layui-icon layui-icon-user"></i>
+									<cite>账簿</cite>
+								</a>
+								<dl class="layui-nav-child">
+									<dd data-name="task">
+										<a lay-href="${BASE_PATH}/admin/post/toList" lay-text="">明细账</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/admin/minganci/toList" lay-text="">总账</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/admin/postType/toList" lay-text="">科目余额</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/front/wxuser/bnnerUpload" lay-text="">科目汇总</a>
 									</dd>
 								</dl>
 							</li>
 							<li data-name="task" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="任务" lay-direction="2">
+								<a href="javascript:;" lay-tips="报表" lay-direction="2">
 									<i class="layui-icon layui-icon-user"></i>
-									<cite>财务管理</cite>
+									<cite>报表</cite>
 								</a>
 								<dl class="layui-nav-child">
 									<dd data-name="task">
-										<a lay-href="${BASE_PATH}/admin/task/task_list" lay-text="">提现管理</a>
+										<a lay-href="${BASE_PATH}/admin/task/task_list" lay-text="">利润报表</a>
 									</dd>
-									
+									<dd data-name="task">
+										<a lay-href="${BASE_PATH}/admin/task/task_lisst" lay-text="">利润报表季报</a>
+									</dd>
+									<dd data-name="task">
+										<a lay-href="${BASE_PATH}/admin/task/task_list3" lay-text="">现金流量</a>
+									</dd>
+									<dd data-name="task">
+										<a lay-href="${BASE_PATH}/admin/task/task_list5" lay-text="">财务概要信息</a>
+									</dd>
 								</dl>
 							</li>
 							<li data-name="quanzi" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="圈子" lay-direction="2">
+								<a href="javascript:;" lay-tips="税务" lay-direction="2">
 									<i class="layui-icon layui-icon-user"></i>
-									<cite>圈子管理</cite>
+									<cite>税务</cite>
 								</a>
 								<dl class="layui-nav-child">
-									<dd data-name="task">
-										<a lay-href="${BASE_PATH}/admin/post/toList" lay-text="">帖子列表</a>
+									<dd data-name="task" lay-tips="国税申报" lay-direction="2">
+										<a lay-href="${BASE_PATH}/admin/post/toList" lay-text="">国税申报</a>
 									</dd>
 									<dd data-name="task_type">
-										<a lay-href="${BASE_PATH}/admin/minganci/toList" lay-text="">敏感词管理</a>
+										<a lay-href="${BASE_PATH}/admin/minganci/toList" lay-text="">纳税统计表</a>
 									</dd>
 									<dd data-name="task_type">
-										<a lay-href="${BASE_PATH}/admin/postType/toList" lay-text="">分类管理</a>
-									</dd>
-									<dd data-name="task_type">
-										<a lay-href="${BASE_PATH}/front/wxuser/bnnerUpload" lay-text="">图片列表</a>
+										<a lay-href="${BASE_PATH}/admin/postType/toList" lay-text="">税务信息</a>
 									</dd>
 								</dl>
 								</li>
 								<li data-name="quanzi" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="积分" lay-direction="2">
+								<a href="javascript:;" lay-tips="设置" lay-direction="2">
 									<i class="layui-icon layui-icon-user"></i>
-									<cite>积分管理</cite>
+									<cite>设置</cite>
 								</a>
 								<dl class="layui-nav-child">
 									<dd data-name="task">
-										<a lay-href="${BASE_PATH}/admin/integral/integral_rule_page" lay-text="">积分规则</a>
+										<a lay-href="${BASE_PATH}/admin/finance/finance_subject_page" lay-text="">科目</a>
 									</dd>
 									<dd data-name="task_type">
-										<a lay-href="${BASE_PATH}/admin/integral/integral_index_page" lay-text="">用户积分</a>
+										<a lay-href="${BASE_PATH}/admin/integral/integral_index_page" lay-text="">币别</a>
 									</dd>
 									<dd data-name="task_type">
-										<a lay-href="${BASE_PATH}/admin/coupons/coupons_rule_page" lay-text="">优惠卷</a>
+										<a lay-href="${BASE_PATH}/admin/coupons/coupons_index_page" lay-text="">数据备份</a>
 									</dd>
 									<dd data-name="task_type">
-										<a lay-href="${BASE_PATH}/admin/coupons/coupons_index_page" lay-text="">用户优惠卷</a>
+										<a lay-href="${BASE_PATH}/admin/coupons/coupons_index_page" lay-text="">凭证模板</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/admin/coupons/coupons_index_page" lay-text="">权限设置</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/admin/coupons/coupons_index_page" lay-text="">初始化</a>
 									</dd>
 								</dl>
 								</li>
-								
-								<li data-name="user" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="客服管理" lay-direction="2">
-									<i class="layui-icon layui-icon-chart-screen"></i>
-									<cite>客服管理</cite>
+								<li data-name="quanzi" class="layui-nav-item">
+								<a href="javascript:;" lay-tips="系统信息" lay-direction="2">
+									<i class="layui-icon layui-icon-user"></i>
+									<cite>系统信息</cite>
 								</a>
 								<dl class="layui-nav-child">
-									<dd data-name="thead">
-										<a lay-href="${BASE_PATH}/admin/customer/customer_index_page" lay-text="">客服管理</a>
+									<dd data-name="task">
+										<a lay-href="${BASE_PATH}/admin/integral/integral_rule_page" lay-text="">系统异常</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/admin/system/system_record_index" lay-text="">操作日志</a>
+									</dd>
+									<dd data-name="task_type">
+										<a lay-href="${BASE_PATH}/admin/coupons/coupons_index_page" lay-text="">数据备份</a>
 									</dd>
 								</dl>
 								</li>
-								
-								<li data-name="user" class="layui-nav-item">
-								<a href="javascript:;" lay-tips="运营管理" lay-direction="2">
-									<i class="layui-icon layui-icon-chart-screen"></i>
-									<cite>运营管理</cite>
-								</a>
-								<dl class="layui-nav-child">
-									<dd data-name="thead">
-										<a lay-href="${BASE_PATH}/admin/operate/system_inform_page" lay-text="">系统通知</a>
-									</dd>
-									<dd data-name="thead">
-										<a lay-href="${BASE_PATH}/admin/operate/about_us_page" lay-text="">关于我们</a>
-									</dd>
-									<dd data-name="thead">
-										<a lay-href="${BASE_PATH}/admin/operate/aqs_page" lay-text="">常见问题</a>
-									</dd>
-								</dl>
+								<li style="height:30px">
+									
 								</li>
 							<li data-name="task" class="layui-nav-item">
 						</ul>
@@ -239,12 +324,12 @@
 				<!-- 主体内容 -->
 				<div class="layui-body" id="LAY_app_body">
 					<div class="layadmin-tabsbody-item layui-show">
-						<iframe src="${BASE_PATH}/admin/home" frameborder="0" class="layadmin-iframe"></iframe>
+						<iframe src="${BASE_PATH}/admin/home" frameborder="0" class="layadmin-iframe" ></iframe>
 					</div>
 				</div>
 
 				<!-- 辅助元素，一般用于移动设备下遮罩 -->
-				<div class="layadmin-body-shade" layadmin-event="shade"></div>
+				<div class="layadmin-body-shade" layadmin-event="shade">ddd</div>
 			</div>
 		</div>
 	

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doing.src.dao.system.SystemRecordMapper">
+	<resultMap id="BaseResultMap"
+		type="com.doing.src.entity.system.SystemRecord">
+		<id column="admin_id" jdbcType="VARCHAR" property="adminId" />
+		<result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
+		<result column="login_address" jdbcType="VARCHAR"
+			property="loginAddress" />
+		<result column="record_dt" jdbcType="TIMESTAMP"
+			property="recordDt" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		admin_id, login_ip, login_address, record_dt
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from system_record
+		where admin_id = #{adminId,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from system_record
+		where admin_id = #{adminId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert"
+		parameterType="com.doing.src.entity.system.SystemRecord">
+		insert into system_record (admin_id, login_ip, login_address,
+		record_dt)
+		values (#{adminId,jdbcType=VARCHAR}, #{loginIp,jdbcType=VARCHAR},
+		#{loginAddress,jdbcType=VARCHAR},
+		#{recordDt,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.doing.src.entity.system.SystemRecord">
+		insert into system_record
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="adminId != null">
+				admin_id,
+			</if>
+			<if test="loginIp != null">
+				login_ip,
+			</if>
+			<if test="loginAddress != null">
+				login_address,
+			</if>
+			<if test="recordDt != null">
+				record_dt,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="adminId != null">
+				#{adminId,jdbcType=VARCHAR},
+			</if>
+			<if test="loginIp != null">
+				#{loginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="loginAddress != null">
+				#{loginAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="recordDt != null">
+				#{recordDt,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.doing.src.entity.system.SystemRecord">
+		update system_record
+		<set>
+			<if test="loginIp != null">
+				login_ip = #{loginIp,jdbcType=VARCHAR},
+			</if>
+			<if test="loginAddress != null">
+				login_address = #{loginAddress,jdbcType=VARCHAR},
+			</if>
+			<if test="recordDt != null">
+				record_dt = #{recordDt,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where admin_id = #{adminId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.doing.src.entity.system.SystemRecord">
+		update system_record
+		set login_ip = #{loginIp,jdbcType=VARCHAR},
+		login_address = #{loginAddress,jdbcType=VARCHAR},
+		record_dt = #{recordDt,jdbcType=TIMESTAMP}
+		where admin_id = #{adminId,jdbcType=VARCHAR}
+	</update>
+	<select id="selectSystemRecordAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from system_record
+		limit #{page},#{limit}
+	</select>
+	<select id="findCount" resultType="INTEGER">
+		select count(*)
+		from system_record
+	</select>
+</mapper>

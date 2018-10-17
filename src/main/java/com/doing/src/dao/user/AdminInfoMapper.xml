@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doing.src.dao.user.AdminInfoMapper">
+  <resultMap id="BaseResultMap" type="com.doing.src.entity.user.AdminInfo">
+    <id column="admin_id" jdbcType="VARCHAR" property="adminId" />
+    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+    <result column="admin_sex" jdbcType="VARCHAR" property="adminSex" />
+    <result column="admin_addr" jdbcType="VARCHAR" property="adminAddr" />
+    <result column="admin_tel" jdbcType="VARCHAR" property="adminTel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    admin_id, admin_name, admin_sex, admin_addr, admin_tel
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin_info
+    where admin_id = #{adminId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from admin_info
+    where admin_id = #{adminId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.doing.src.entity.user.AdminInfo">
+    insert into admin_info (admin_id, admin_name, admin_sex, 
+      admin_addr, admin_tel)
+    values (#{adminId,jdbcType=VARCHAR}, #{adminName,jdbcType=VARCHAR}, #{adminSex,jdbcType=VARCHAR}, 
+      #{adminAddr,jdbcType=VARCHAR}, #{adminTel,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doing.src.entity.user.AdminInfo">
+    insert into admin_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="adminName != null">
+        admin_name,
+      </if>
+      <if test="adminSex != null">
+        admin_sex,
+      </if>
+      <if test="adminAddr != null">
+        admin_addr,
+      </if>
+      <if test="adminTel != null">
+        admin_tel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        #{adminId,jdbcType=VARCHAR},
+      </if>
+      <if test="adminName != null">
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminSex != null">
+        #{adminSex,jdbcType=VARCHAR},
+      </if>
+      <if test="adminAddr != null">
+        #{adminAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="adminTel != null">
+        #{adminTel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doing.src.entity.user.AdminInfo">
+    update admin_info
+    <set>
+      <if test="adminName != null">
+        admin_name = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminSex != null">
+        admin_sex = #{adminSex,jdbcType=VARCHAR},
+      </if>
+      <if test="adminAddr != null">
+        admin_addr = #{adminAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="adminTel != null">
+        admin_tel = #{adminTel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where admin_id = #{adminId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doing.src.entity.user.AdminInfo">
+    update admin_info
+    set admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_sex = #{adminSex,jdbcType=VARCHAR},
+      admin_addr = #{adminAddr,jdbcType=VARCHAR},
+      admin_tel = #{adminTel,jdbcType=VARCHAR}
+    where admin_id = #{adminId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectByAll"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin_info
+    limit #{page},#{limit}
+  </select>
+  
+   <select id="selectCount"  resultType="INTEGER">
+    select count(*)
+    from admin_info
+  </select>
+</mapper>

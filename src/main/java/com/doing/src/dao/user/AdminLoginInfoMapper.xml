@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytw1.dao.User.admin_login_infoMapper">
+  <resultMap id="BaseResultMap" type="com.ytw1.entity.User.admin_login_info">
+    <id column="admin_id" jdbcType="VARCHAR" property="adminId" />
+    <result column="admin_pwd" jdbcType="VARCHAR" property="adminPwd" />
+    <result column="admin_state" jdbcType="INTEGER" property="adminState" />
+    <result column="admin_rank" jdbcType="INTEGER" property="adminRank" />
+    <result column="admin_dt" jdbcType="TIMESTAMP" property="adminDt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    admin_id, admin_pwd, admin_state, admin_rank, admin_dt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from admin_login_info
+    where admin_id = #{adminId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from admin_login_info
+    where admin_id = #{adminId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ytw1.entity.User.admin_login_info">
+    insert into admin_login_info (admin_id, admin_pwd, admin_state, 
+      admin_rank, admin_dt)
+    values (#{adminId,jdbcType=VARCHAR}, #{adminPwd,jdbcType=VARCHAR}, #{adminState,jdbcType=INTEGER}, 
+      #{adminRank,jdbcType=INTEGER}, #{adminDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ytw1.entity.User.admin_login_info">
+    insert into admin_login_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="adminPwd != null">
+        admin_pwd,
+      </if>
+      <if test="adminState != null">
+        admin_state,
+      </if>
+      <if test="adminRank != null">
+        admin_rank,
+      </if>
+      <if test="adminDt != null">
+        admin_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="adminId != null">
+        #{adminId,jdbcType=VARCHAR},
+      </if>
+      <if test="adminPwd != null">
+        #{adminPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="adminState != null">
+        #{adminState,jdbcType=INTEGER},
+      </if>
+      <if test="adminRank != null">
+        #{adminRank,jdbcType=INTEGER},
+      </if>
+      <if test="adminDt != null">
+        #{adminDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ytw1.entity.User.admin_login_info">
+    update admin_login_info
+    <set>
+      <if test="adminPwd != null">
+        admin_pwd = #{adminPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="adminState != null">
+        admin_state = #{adminState,jdbcType=INTEGER},
+      </if>
+      <if test="adminRank != null">
+        admin_rank = #{adminRank,jdbcType=INTEGER},
+      </if>
+      <if test="adminDt != null">
+        admin_dt = #{adminDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where admin_id = #{adminId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ytw1.entity.User.admin_login_info">
+    update admin_login_info
+    set admin_pwd = #{adminPwd,jdbcType=VARCHAR},
+      admin_state = #{adminState,jdbcType=INTEGER},
+      admin_rank = #{adminRank,jdbcType=INTEGER},
+      admin_dt = #{adminDt,jdbcType=TIMESTAMP}
+    where admin_id = #{adminId,jdbcType=VARCHAR}
+  </update>
+</mapper>

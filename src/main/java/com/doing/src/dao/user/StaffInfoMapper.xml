@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doing.src.dao.user.StaffInfoMapper">
+  <resultMap id="BaseResultMap" type="com.doing.src.entity.user.StaffInfo">
+    <result column="staff_id" jdbcType="VARCHAR" property="staffId" />
+    <result column="staff_name" jdbcType="VARCHAR" property="staffName" />
+    <result column="staff_sex" jdbcType="VARCHAR" property="staffSex" />
+    <result column="staff_birth" jdbcType="DATE" property="staffBirth" />
+    <result column="staff_tel" jdbcType="VARCHAR" property="staffTel" />
+    <result column="staff_address" jdbcType="VARCHAR" property="staffAddress" />
+    <result column="staff_describe" jdbcType="VARCHAR" property="staffDescribe" />
+  </resultMap>
+   <sql id="Base_Column_List">
+    staff_id, staff_name, staff_sex, staff_birth, staff_tel,staff_address,staff_describe
+  </sql>
+  <insert id="insert" parameterType="com.doing.src.entity.user.StaffInfo">
+    insert into staff_info (staff_id, staff_name, staff_sex, 
+      staff_birth, staff_tel, staff_address, 
+      staff_describe)
+    values (#{staffId,jdbcType=VARCHAR}, #{staffName,jdbcType=VARCHAR}, #{staffSex,jdbcType=VARCHAR}, 
+      #{staffBirth,jdbcType=DATE}, #{staffTel,jdbcType=VARCHAR}, #{staffAddress,jdbcType=VARCHAR}, 
+      #{staffDescribe,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doing.src.entity.user.StaffInfo">
+    insert into staff_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="staffId != null">
+        staff_id,
+      </if>
+      <if test="staffName != null">
+        staff_name,
+      </if>
+      <if test="staffSex != null">
+        staff_sex,
+      </if>
+      <if test="staffBirth != null">
+        staff_birth,
+      </if>
+      <if test="staffTel != null">
+        staff_tel,
+      </if>
+      <if test="staffAddress != null">
+        staff_address,
+      </if>
+      <if test="staffDescribe != null">
+        staff_describe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="staffId != null">
+        #{staffId,jdbcType=VARCHAR},
+      </if>
+      <if test="staffName != null">
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="staffSex != null">
+        #{staffSex,jdbcType=VARCHAR},
+      </if>
+      <if test="staffBirth != null">
+        #{staffBirth,jdbcType=DATE},
+      </if>
+      <if test="staffTel != null">
+        #{staffTel,jdbcType=VARCHAR},
+      </if>
+      <if test="staffAddress != null">
+        #{staffAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="staffDescribe != null">
+        #{staffDescribe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByAll"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from staff_info
+    limit #{page},#{limit}
+  </select>
+   <select id="selectCount"  resultType="INTEGER">
+    select count(*)
+    from staff_info
+  </select>
+</mapper>
+
+

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.doing.src.dao.property.PropertyInfoMapper">
+  <resultMap id="BaseResultMap" type="com.doing.src.entity.property.PropertyInfo">
+    <id column="property_id" jdbcType="VARCHAR" property="propertyId" />
+    <result column="property_type_id" jdbcType="VARCHAR" property="propertyTypeId" />
+    <result column="property_use_id" jdbcType="INTEGER" property="propertyUseId" />
+    <result column="property_title" jdbcType="VARCHAR" property="propertyTitle" />
+    <result column="property_describe" jdbcType="VARCHAR" property="propertyDescribe" />
+    <result column="property_count" jdbcType="INTEGER" property="propertyCount" />
+    <result column="admin_id" jdbcType="VARCHAR" property="adminId" />
+    <result column="property_dt" jdbcType="TIMESTAMP" property="propertyDt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    property_id, property_type_id, property_use_id, property_title, property_describe, 
+    property_count, admin_id, property_dt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from property_info
+    where property_id = #{propertyId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from property_info
+    where property_id = #{propertyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.doing.src.entity.property.PropertyInfo">
+    insert into property_info (property_id, property_type_id, property _use_id, 
+      property_title, property_describe, property_count, 
+      admin_id, property_dt)
+    values (#{propertyId,jdbcType=VARCHAR}, #{propertyTypeId,jdbcType=VARCHAR}, #{propertyUseId,jdbcType=INTEGER}, 
+      #{propertyTitle,jdbcType=VARCHAR}, #{propertyDescribe,jdbcType=VARCHAR}, #{propertyCount,jdbcType=INTEGER}, 
+      #{adminId,jdbcType=VARCHAR}, #{propertyDt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.doing.src.entity.property.PropertyInfo">
+    insert into property_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="propertyId != null">
+        property_id,
+      </if>
+      <if test="propertyTypeId != null">
+        property_type_id,
+      </if>
+      <if test="propertyUseId != null">
+        property_use__id,
+      </if>
+      <if test="propertyTitle != null">
+        property_title,
+      </if>
+      <if test="propertyDescribe != null">
+        property_describe,
+      </if>
+      <if test="propertyCount != null">
+        property_count,
+      </if>
+      <if test="adminId != null">
+        admin_id,
+      </if>
+      <if test="propertyDt != null">
+        property_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="propertyId != null">
+        #{propertyId,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyTypeId != null">
+        #{propertyTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyUseId != null">
+        #{propertyUseId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyTitle != null">
+        #{propertyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyDescribe != null">
+        #{propertyDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyCount != null">
+        #{propertyCount,jdbcType=INTEGER},
+      </if>
+      <if test="adminId != null">
+        #{adminId,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyDt != null">
+        #{propertyDt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.doing.src.entity.property.PropertyInfo">
+    update property_info
+    <set>
+      <if test="propertyTypeId != null">
+        property_type_id = #{propertyTypeId,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyUseId != null">
+        property_use_id = #{propertyUseId,jdbcType=INTEGER},
+      </if>
+      <if test="propertyTitle != null">
+        property_title = #{propertyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyDescribe != null">
+        property_describe = #{propertyDescribe,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyCount != null">
+        property_count = #{propertyCount,jdbcType=INTEGER},
+      </if>
+      <if test="adminId != null">
+        admin_id = #{adminId,jdbcType=VARCHAR},
+      </if>
+      <if test="propertyDt != null">
+        property_dt = #{propertyDt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where property_id = #{propertyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.doing.src.entity.property.PropertyInfo">
+    update property_info
+    set property_type_id = #{propertyTypeId,jdbcType=VARCHAR},
+      property_use_id" = #{propertyUseId,jdbcType=INTEGER},
+      property_title = #{propertyTitle,jdbcType=VARCHAR},
+      property_describe = #{propertyDescribe,jdbcType=VARCHAR},
+      property_count = #{propertyCount,jdbcType=INTEGER},
+      admin_id = #{adminId,jdbcType=VARCHAR},
+      property_dt = #{propertyDt,jdbcType=TIMESTAMP}
+    where property_id = #{propertyId,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectPeopertyInfoAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from property_info
+    limit #{page},#{limit}
+  </select>
+   <select id="findCount" resultType="int">
+	select count(*)
+	from property_info
+  </select>
+</mapper>
